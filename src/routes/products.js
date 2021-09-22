@@ -37,7 +37,7 @@ module.exports = (app, nextMain) => {
    */
   // app.get('/products', requireAuth, (req, resp, next) => {
   // });
-  app.get('/products', getProduct);
+  app.get('/products', requireAuth, getProduct);
 
   /**
    * @name GET /products/:productId
@@ -58,7 +58,7 @@ module.exports = (app, nextMain) => {
    */
   // app.get('/products/:productId', requireAuth, (req, resp, next) => {
   // });
-  app.get('/products/:productId', getProductById);
+  app.get('/products/:productId', requireAuth, getProductById);
 
   /**
    * @name POST /products
@@ -85,7 +85,7 @@ module.exports = (app, nextMain) => {
   // crear producto
   // app.post('/products', requireAdmin, (req, resp, next) => {
   // });
-  app.post('/products', createProduct);
+  app.post('/products', requireAdmin, createProduct);
 
   /**
    * @name PUT /products
@@ -113,7 +113,7 @@ module.exports = (app, nextMain) => {
   // actualizar producto
   // app.put('/products/:productId', requireAdmin, (req, resp, next) => {
   // });
-  app.put('/products/:productId', updateProductById);
+  app.put('/products/:productId', requireAdmin, updateProductById);
 
   /**
    * @name DELETE /products
@@ -137,7 +137,7 @@ module.exports = (app, nextMain) => {
   // app.delete('/products/:productId', requireAdmin, (req, resp, next) => {
   // });
 
-  app.delete('/products/:productId', deleteProductById);
+  app.delete('/products/:productId', requireAdmin, deleteProductById);
 
   nextMain();
 };

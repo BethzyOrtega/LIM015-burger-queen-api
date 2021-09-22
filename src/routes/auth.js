@@ -1,8 +1,4 @@
-// const jwt = require('jsonwebtoken');
-// const config = require('../config');
-const { signIn, signUp, authenthicateUser } = require('../controller/auth');
-
-// const { secret } = config;
+const { authenthicateUser } = require('../controller/auth');
 
 /** @module auth */
 module.exports = (app, nextMain) => {
@@ -31,8 +27,6 @@ module.exports = (app, nextMain) => {
   //   next();
   // });
 
-  app.post('/signIn', signIn);
-  app.post('/signUp', signUp);
   app.post('/auth', authenthicateUser);
 
   return nextMain();
