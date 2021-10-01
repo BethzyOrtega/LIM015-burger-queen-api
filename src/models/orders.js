@@ -10,12 +10,12 @@ const orderSchema = new Schema({
     type: String,
     required: true,
   },
-  product: [{
-    quantity: {
+  products: [{
+    qty: {
       type: Number,
       required: true,
     },
-    productId: {
+    product: {
       ref: 'Product',
       type: Schema.Types.ObjectId,
       required: true,
@@ -24,6 +24,7 @@ const orderSchema = new Schema({
   status: {
     type: String,
     required: true,
+    default: 'pending',
   },
   dateEntry: {
     type: Date,
@@ -31,8 +32,12 @@ const orderSchema = new Schema({
   },
   dateProcessed: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
+},
+{
+  timestamps: true,
+  versionKey: false,
 });
 
 orderSchema.plugin(mongoosePaginate);
