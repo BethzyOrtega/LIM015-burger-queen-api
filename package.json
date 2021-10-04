@@ -1,5 +1,7 @@
 {
   "name": "burger-queen-api",
+  "author":"Bethzy Ortega Medina",
+  "description":"API BQ",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
