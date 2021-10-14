@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const config = require('./config');
 const authMiddleware = require('./middleware/auth');
@@ -7,6 +8,7 @@ const pkg = require('../package.json');
 const { createRoles } = require('./libs/initialSetup');
 
 const { secret } = config;
+
 const app = express();
 
 createRoles();
@@ -16,6 +18,7 @@ app.set('config', config);
 app.set('pkg', pkg);
 
 // middlewares
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(authMiddleware(secret));
