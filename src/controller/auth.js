@@ -18,7 +18,8 @@ const authenthicateUser = async (req, res) => {
 
   /* Validar si el pass coincide */
   const matchPassword = await User.comparePassword(password, userFound.password);
-  if (!matchPassword) return res.status(404).json({ token: null, message: 'Invalid Password' });
+  if (!matchPassword) return res.status(404).json('Invalid Password');
+  // { token: null, message: 'Invalid Password' }
 
   /* Devuelve el token del usuario autenticado correctamente */
   const token = jwt.sign({ id: userFound._id }, secret, { expiresIn: 86400 });
