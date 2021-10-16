@@ -22,7 +22,7 @@ const createProduct = async (req, res) => {
 
 const getProduct = async (req, res) => {
   const url = `${req.protocol}://${req.get('host') + req.path}`; // http://localhost:8080/products
-  const limit = parseInt(req.query.limit, 10) || 10;
+  const limit = parseInt(req.query.limit, 20) || 20;
   const page = parseInt(req.query.page, 10) || 1;
   const products = await Product.paginate({}, { limit, page });
   const links = pagination(products, url, products.limit, products.page, products.totalPages);
