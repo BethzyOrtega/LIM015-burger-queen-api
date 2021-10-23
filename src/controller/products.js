@@ -6,7 +6,7 @@ const createProduct = async (req, res) => {
     name, price, image, type,
   } = req.body;
 
-  if (!name || !price || typeof price !== 'number') {
+  if (!name || !price) {
     // return next(400);
     return res.status(400).json('indicar nombre o precio');
   }
