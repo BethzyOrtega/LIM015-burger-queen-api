@@ -52,7 +52,7 @@ const updateProductById = async (req, res) => {
 
   /* validar que se indique propiedad a modificar */
 
-  if ((Object.keys(req.body).length === 0) || req.body.name === '' || req.body.price === '' || req.body.image === '' || req.body.type === '' || typeof req.body.price !== 'number') return res.status(400).json('indica dato a modificar');
+  if ((Object.keys(req.body).length === 0) || req.body.name === '' || req.body.price === '' || req.body.image === '' || req.body.type === '') return res.status(400).json('indica dato a modificar');
 
   const updateProduct = await Product.findByIdAndUpdate(req.params.productId, req.body,
     { new: true });
