@@ -52,11 +52,9 @@ module.exports.requireAuth = (req, resp, next) => {
 
 module.exports.requireAdmin = (req, resp, next) => {
   if (!module.exports.isAuthenticated(req)) {
-    // return next(401);
     return resp.status(401).json({ message: 'requiere autenticacion' });
   } (module.exports.isAdmin(req)).then((res) => {
     if (!res) {
-      // return next(403);
       return resp.status(403).json({ message: 'requires administrator role' });
     }
     return next();
